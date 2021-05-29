@@ -5,6 +5,8 @@ use Eddy\Framework\{
     Resources\ResourcesProvider,
     Server\ServerProvider
 };
+use Eddy\Framework\Core\Kernel;
+use Eddy\Framework\Support\ReflectionConstructor;
 use Pimple\{
     Container,
     ServiceProviderInterface
@@ -17,6 +19,12 @@ class CoreProvider implements ServiceProviderInterface
     {
         $app[Filesystem::class] = function () {
             return new Filesystem();
+        };
+
+        $app[ReflectionConstructor::class] = function (Container $c) {
+            return new ReflectionConstructor(
+                $c[Kernel::class]
+            );
         };
 
         $app->register(new HttpProvider());

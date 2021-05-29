@@ -7,10 +7,10 @@ use React\Http\Message\Response;
 
 class RouteDispatcher
 {
-    public function __construct(private Dispatcher $dispatcher)
-    {
-        
-    }
+    public function __construct(
+        private Dispatcher $dispatcher,
+        private ControllerResolver $resolver,
+    ) {}
 
     public function dispatch(ServerRequestInterface $request)
     {
@@ -34,7 +34,8 @@ class RouteDispatcher
                     'Method not allowed']
                 );
             case Dispatcher::FOUND:
-                return $routeInfo[1]($request);
+                $controller = $this->resolver->resolve($routeInfo[1]);
+                return $controller($request);
         }
 
         throw new \LogicException(

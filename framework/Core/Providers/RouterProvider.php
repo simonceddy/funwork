@@ -2,7 +2,9 @@
 namespace Eddy\Framework\Core\Providers;
 
 use Eddy\Framework\Bootstrap\InitRouter;
+use Eddy\Framework\Routing\ControllerResolver;
 use Eddy\Framework\Routing\RouteDispatcher;
+use Eddy\Framework\Support\ReflectionConstructor;
 use FastRoute\{
     DataGenerator,
     Dispatcher,
@@ -16,8 +18,6 @@ use Pimple\{
     Container,
     ServiceProviderInterface
 };
-use Psr\Http\Message\ServerRequestInterface;
-use React\Http\Message\Response;
 
 class RouterProvider implements ServiceProviderInterface
 {
@@ -42,8 +42,15 @@ class RouterProvider implements ServiceProviderInterface
             return new GroupCountBasedDispatcher($c[RouteCollector::class]->getData());
         };
 
+        $app[ControllerResolver::class] = function (Container $c) {
+            return new ControllerResolver($c, $c[ReflectionConstructor::class]);
+        };
+
         $app[RouteDispatcher::class] = function (Container $c) {
-            return new RouteDispatcher($c[Dispatcher::class]);
+            return new RouteDispatcher(
+                $c[Dispatcher::class],
+                $c[ControllerResolver::class]
+            );
         };
     }
 }

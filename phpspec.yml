@@ -1,0 +1,14 @@
+suites:
+    framework:
+        psr4_prefix:  Eddy\Framework
+        namespace:    Eddy\Framework
+        spec_path:    tests\framework
+        src_path:     framework
+    app:
+        psr4_prefix:  App
+        namespace:    App
+        spec_path:    tests\app
+        src_path:     src
+
+
+formatter.name:   pretty

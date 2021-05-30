@@ -10,6 +10,8 @@ class CommandLoader implements CommandLoaderInterface
     private array $commands = [
         'serve' => Commands\ServeCommand::class,
         'make:controller' => Commands\Make\MakeControllerCommand::class,
+        'make:command' => Commands\Make\MakeCommandCommand::class,
+        'make:middleware' => Commands\Make\MakeMiddlewareCommand::class,
     ];
 
     public function __construct(

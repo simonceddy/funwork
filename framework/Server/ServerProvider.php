@@ -2,18 +2,20 @@
 namespace Eddy\Framework\Server;
 
 use Eddy\Framework\Core\Config;
+use Eddy\Framework\Routing\LoadMiddleware;
 use Eddy\Framework\Routing\RouteDispatcher;
+use Eddy\RefCon\ReflectionConstructor;
 use Pimple\{
     Container,
     ServiceProviderInterface
 };
-use Psr\Http\Message\ServerRequestInterface;
+// use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\{
     Factory,
     LoopInterface
 };
 use React\Http\{
-    Message\Response,
+    // Message\Response,
     Server as HttpServer,
 };
 use React\Socket\Server as SocketServer;
@@ -27,9 +29,17 @@ class ServerProvider implements ServiceProviderInterface
         };
 
         $app[HttpServer::class] = function (Container $c) {
+            $handler = [
+                ...(new LoadMiddleware(
+                    $c[ReflectionConstructor::class],
+                    $c[Config::class]['http.middleware']
+                ))->load(),
+                $c[RouteDispatcher::class]
+            ];
+
             return new HttpServer(
                 $c[LoopInterface::class],
-                $c[RouteDispatcher::class]
+                ...$handler,
             );
         };
 

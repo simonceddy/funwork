@@ -1,0 +1,13 @@
+<?php
+namespace %namespace%;
+
+use Psr\Http\Message\ServerRequestInterface as Request;
+
+class %name%
+{
+    public function __invoke(Request $request, callable $next)
+    {
+        // Put middleware logic here
+        return $next($request);
+    }
+}

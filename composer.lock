@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c589de1ec8ce53247da553bf1353fbd1",
+    "content-hash": "435115226ff346998051513b1f44a260",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -3245,6 +3245,46 @@
             "time": "2021-05-29T07:35:11+00:00"
         },
         {
+            "name": "simoneddy/refcon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simonceddy/refcon.git",
+                "reference": "b7ca8915d0a456b12abcccc84787ff647bf43b6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simonceddy/refcon/zipball/b7ca8915d0a456b12abcccc84787ff647bf43b6c",
+                "reference": "b7ca8915d0a456b12abcccc84787ff647bf43b6c",
+                "shasum": ""
+            },
+            "require": {
+                "psr/container": "^1.1|^2.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eddy\\RefCon\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Simon Eddy",
+                    "email": "simon@simoneddy.com.au"
+                }
+            ],
+            "description": "Basic reflection constructor",
+            "support": {
+                "source": "https://github.com/simonceddy/refcon/tree/master",
+                "issues": "https://github.com/simonceddy/refcon/issues"
+            },
+            "time": "2021-05-30T04:21:34+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v5.2.8",
             "source": {
@@ -4957,7 +4997,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "simoneddy/coder": 20
+        "simoneddy/coder": 20,
+        "simoneddy/refcon": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

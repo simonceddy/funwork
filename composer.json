@@ -49,12 +49,17 @@
         "simoneddy/coder": "dev-master",
         "illuminate/database": "^8.44",
         "illuminate/contracts": "^8.44",
-        "doctrine/dbal": "^3.1"
+        "doctrine/dbal": "^3.1",
+        "simoneddy/refcon": "dev-master"
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/simonceddy/coder"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/simonceddy/refcon"
         }
     ]
 }

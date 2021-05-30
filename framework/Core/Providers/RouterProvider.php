@@ -1,19 +1,21 @@
 <?php
 namespace Eddy\Framework\Core\Providers;
 
-use Eddy\Framework\Bootstrap\InitRouter;
-use Eddy\Framework\Routing\ControllerResolver;
-use Eddy\Framework\Routing\RouteDispatcher;
-use Eddy\Framework\Support\ReflectionConstructor;
+use Eddy\Framework\{
+    Bootstrap\InitRouter,
+    Routing\ControllerResolver,
+    Routing\RouteDispatcher,
+};
+use Eddy\RefCon\ReflectionConstructor;
 use FastRoute\{
     DataGenerator,
     Dispatcher,
     RouteCollector,
-    RouteParser
+    RouteParser,
+    DataGenerator\GroupCountBased,
+    Dispatcher\GroupCountBased as GroupCountBasedDispatcher,
+    RouteParser\Std as StdParser,
 };
-use FastRoute\DataGenerator\GroupCountBased;
-use FastRoute\Dispatcher\GroupCountBased as GroupCountBasedDispatcher;
-use FastRoute\RouteParser\Std as StdParser;
 use Pimple\{
     Container,
     ServiceProviderInterface

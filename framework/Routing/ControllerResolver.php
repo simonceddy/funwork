@@ -1,7 +1,7 @@
 <?php
 namespace Eddy\Framework\Routing;
 
-use Eddy\Framework\Support\ReflectionConstructor;
+use Eddy\RefCon\ReflectionConstructor;
 use Pimple\Container;
 
 class ControllerResolver

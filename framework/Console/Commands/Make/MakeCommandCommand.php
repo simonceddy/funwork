@@ -8,12 +8,12 @@ use Symfony\Component\Console\{
     Command\Command,
     Input\InputArgument,
     Input\InputInterface,
+    Input\InputOption,
     Output\OutputInterface
 };
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Filesystem\Filesystem;
 
-class MakeControllerCommand extends Command
+class MakeCommandCommand extends Command
 {
     public function __construct(
         private Config $config,
@@ -26,12 +26,12 @@ class MakeControllerCommand extends Command
 
     protected function configure()
     {
-        $this->setName('make:controller')
-            ->setDescription('Creates a new controller class')
+        $this->setName('make:command')
+            ->setDescription('Creates a new console command class')
             ->addArgument(
                 'name',
                 InputArgument::REQUIRED,
-                'The name of the controller'
+                'The name of the command'
             )
             ->addOption(
                 'force',
@@ -45,7 +45,7 @@ class MakeControllerCommand extends Command
     {
         $name = $input->getArgument('name');
 
-        $ns = $this->config['app.namespace'] . '\\Http\\Controllers';
+        $ns = $this->config['app.namespace'] . '\\Console\\Commands';
 
         if (strpos($name, '/')) {
             $bits = explode('/', $name);
@@ -57,7 +57,7 @@ class MakeControllerCommand extends Command
 
         $resource = new PhpResource($name, $ns, projectDir() . '/src');
 
-        $result = $this->creator->create($resource, 'controller');
+        $result = $this->creator->create($resource, 'command');
        
         $fn = $result->getPath();
 
@@ -77,7 +77,7 @@ class MakeControllerCommand extends Command
         }
         
         $output->writeln(
-            '<info>Successfully created controller at ' . $fn . '</info>'
+            '<info>Successfully created command at ' . $fn . '</info>'
         );
         
         return 0;

@@ -6,7 +6,7 @@ use Eddy\Framework\{
     Server\ServerProvider
 };
 use Eddy\Framework\Core\Kernel;
-use Eddy\Framework\Support\ReflectionConstructor;
+use Eddy\RefCon\ReflectionConstructor;
 use Pimple\{
     Container,
     ServiceProviderInterface

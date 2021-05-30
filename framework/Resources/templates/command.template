@@ -1,0 +1,22 @@
+<?php
+namespace %namespace%;
+
+use Symfony\Component\Console\{
+    Command\Command,
+    Input\InputInterface,
+    Output\OutputInterface
+};
+
+class %name% extends Command
+{
+    protected function configure()
+    {
+        // Configure command here
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        // Run command here
+        return 0;
+    }
+}

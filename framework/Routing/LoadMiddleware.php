@@ -10,7 +10,7 @@ class LoadMiddleware
         private array $middlewares = [],
     ) {}
 
-    private function createMiddlewares()
+    public function load()
     {
         $loaded = [];
         foreach ($this->middlewares as $mw) {
@@ -26,10 +26,5 @@ class LoadMiddleware
         }
 
         return $loaded;
-    }
-
-    public function load()
-    {
-        return $this->createMiddlewares();
     }
 }

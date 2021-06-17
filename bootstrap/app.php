@@ -7,5 +7,6 @@ if (file_exists(dirname(__DIR__) . '.env')) {
 $app = \Eddy\Framework\Core\Kernel::create();
 
 // Register services here
+$app['logger.framework']->info('Hello logger');
 
 return $app;

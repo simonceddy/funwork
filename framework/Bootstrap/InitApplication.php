@@ -2,6 +2,7 @@
 namespace Eddy\Framework\Bootstrap;
 
 use Eddy\Framework\Core\Kernel;
+use Eddy\Framework\Exceptions\ExceptionHandler;
 
 class InitApplication
 {
@@ -32,6 +33,12 @@ class InitApplication
 
         if (!empty($providers)) {
             $this->bootProviders($kernel, $providers);
+        }
+
+        if ($kernel->loggingEnabled() && $kernel->has('logger.framework')) {
+            $kernel->setLogger($kernel->get('logger.framework'));
+
+            set_exception_handler(new ExceptionHandler($kernel));
         }
 
         return $kernel;

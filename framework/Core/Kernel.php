@@ -11,6 +11,10 @@ use Pimple\{
     ServiceProviderInterface
 };
 use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerTrait;
 
 /**
  * The Kernel class is the central app object of the framework.
@@ -18,11 +22,18 @@ use Psr\Container\ContainerInterface;
  * It is a PSR-11 wrapper for the pimple container, as well as being aware of
  * application config, and providing some extra helper methods.
  */
-class Kernel implements ContainerInterface, \ArrayAccess
+class Kernel implements ContainerInterface,
+LoggerAwareInterface,
+LoggerInterface,
+\ArrayAccess
 {
     use HasArrayAccess;
+    use LoggerAwareTrait;
+    use LoggerTrait;
 
     private bool $console = false;
+
+    private bool $loggingEnabled = true;
 
     private function __construct(
         private Container $pimple,
@@ -36,6 +47,8 @@ class Kernel implements ContainerInterface, \ArrayAccess
 
     private function preboot()
     {
+        $this->loggingEnabled = $this->config['logs.disabled'] !== true;
+
         if (defined('STDIN') && php_sapi_name() === 'cli') {
             $this->console = true;
         }
@@ -154,6 +167,23 @@ class Kernel implements ContainerInterface, \ArrayAccess
     public function runningInConsole(): bool
     {
         return $this->console;
+    }
+
+    /**
+     * Is application logging enabled
+     *
+     * @return bool
+     */
+    public function loggingEnabled()
+    {
+        return $this->loggingEnabled;
+    }
+
+    public function log($level, $message, array $context = array())
+    {
+        if (isset($this->logger)) {
+            $this->logger->log($level, $message, $context);
+        }
     }
 
     /**

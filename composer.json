@@ -50,7 +50,9 @@
         "illuminate/database": "^8.44",
         "illuminate/contracts": "^8.44",
         "doctrine/dbal": "^3.1",
-        "simoneddy/refcon": "dev-master"
+        "simoneddy/refcon": "dev-master",
+        "psr/log": "^1.1",
+        "monolog/monolog": "^2.2"
     },
     "repositories": [
         {

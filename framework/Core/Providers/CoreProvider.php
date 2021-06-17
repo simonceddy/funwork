@@ -2,10 +2,12 @@
 namespace Eddy\Framework\Core\Providers;
 
 use Eddy\Framework\{
+    // Core\Config,
+    Core\Kernel,
     Resources\ResourcesProvider,
-    Server\ServerProvider
+    Server\ServerProvider,
 };
-use Eddy\Framework\Core\Kernel;
+use Eddy\Framework\Support\Logging\LoggingProvider;
 use Eddy\RefCon\ReflectionConstructor;
 use Pimple\{
     Container,
@@ -26,6 +28,15 @@ class CoreProvider implements ServiceProviderInterface
                 $c[Kernel::class]
             );
         };
+
+        /**
+         * @var Kernel
+         */
+        $kernel = $app[Kernel::class];
+
+        if ($kernel->loggingEnabled()) {
+            $app->register(new LoggingProvider());
+        }
 
         $app->register(new HttpProvider());
         $app->register(new RouterProvider());

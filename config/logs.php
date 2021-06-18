@@ -5,14 +5,10 @@ use Monolog\Logger;
 
 // Work in progress - a bit brittle
 return [
-    // Set tot true to disable logging, preventing any logging services from
-    // being registered
-    'disable' => false,
-
     // Configure any framework loggers
     'loggers' => [
-        // the created logger will be named after the child arrays key
-        // e.g. below the created logger will be called 'framework'
+        // the created logger will be named 'logger.$key'
+        // e.g. below the created logger will be called 'logger.framework'
         'framework' => [
             // List logger handlers here
             StreamHandler::class

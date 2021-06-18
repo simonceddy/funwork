@@ -3,6 +3,7 @@ namespace Eddy\Framework\Bootstrap;
 
 use Eddy\Framework\Core\Kernel;
 use Eddy\Framework\Exceptions\ExceptionHandler;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class InitApplication
 {
@@ -35,10 +36,12 @@ class InitApplication
             $this->bootProviders($kernel, $providers);
         }
 
-        if ($kernel->loggingEnabled() && $kernel->has('logger.framework')) {
+        if ($kernel->has('logger.framework')
+            && $kernel->has(ExceptionHandler::class)
+        ) {
             $kernel->setLogger($kernel->get('logger.framework'));
 
-            set_exception_handler(new ExceptionHandler($kernel));
+            set_exception_handler($kernel[ExceptionHandler::class]);
         }
 
         return $kernel;

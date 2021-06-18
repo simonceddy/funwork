@@ -2,6 +2,7 @@
 namespace Eddy\Framework\Server;
 
 use Eddy\Framework\Core\Config;
+use Eddy\Framework\Exceptions\ExceptionHandler;
 use Eddy\Framework\Routing\LoadMiddleware;
 use Eddy\Framework\Routing\RouteDispatcher;
 use Eddy\RefCon\ReflectionConstructor;
@@ -52,11 +53,21 @@ class ServerProvider implements ServiceProviderInterface
         };
 
         $app[Server::class] = function (Container $c) {
-            return new Server(
+            $server = new Server(
                 $c[LoopInterface::class],
                 $c[HttpServer::class],
                 $c[SocketServer::class],
             );
+
+            $server->on(
+                'error',
+                fn(\Throwable $e) => call_user_func(
+                    $c[ExceptionHandler::class],
+                    $e
+                )
+            );
+
+            return $server;
         };
     }
 }

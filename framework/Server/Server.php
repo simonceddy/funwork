@@ -11,40 +11,36 @@ class Server
         private LoopInterface $loop,
         private HttpServer $httpServer, 
         private SocketServer $socketServer
-    ) {
-        $this->on('error', function (\Throwable $e) {
-            echo 'error: ' . $e->getMessage() . PHP_EOL;
-        });
-    }
+    ) {}
 
     public function on($event, callable $listener)
     {
-        return $this->socketServer->on($event, $listener);
+        return $this->httpServer->on($event, $listener);
     }
 
     public function once($event, callable $listener)
     {
-        return $this->socketServer->once($event, $listener);
+        return $this->httpServer->once($event, $listener);
     }
 
     public function removeAllListeners($event = null)
     {
-        return $this->socketServer->removeAllListeners($event);
+        return $this->httpServer->removeAllListeners($event);
     }
     
     public function removeListener($event, callable $listener)
     {
-        return $this->socketServer->removeListener($event, $listener);
+        return $this->httpServer->removeListener($event, $listener);
     }
 
     public function emit($event, array $arguments = [])
     {
-        return $this->socketServer->emit($event, $arguments);
+        return $this->httpServer->emit($event, $arguments);
     }
 
     public function listeners($event = null)
     {
-        return $this->socketServer->listeners($event);
+        return $this->httpServer->listeners($event);
     }
 
     public function pause()

@@ -67,10 +67,6 @@ LoggerInterface,
     private function bootCoreServices()
     {
         $this->pimple->register(new Providers\CoreProvider());
-
-        if ($this->console) {
-            $this->pimple->register(new ConsoleProvider());
-        }
     }
 
     private function bootApplication()

@@ -7,6 +7,8 @@ use Eddy\Framework\{
     Resources\ResourcesProvider,
     Server\ServerProvider,
 };
+use Eddy\Framework\Console\ConsoleProvider;
+use Eddy\Framework\Exceptions\ExceptionHandler;
 use Eddy\Framework\Support\Logging\LoggingProvider;
 use Eddy\RefCon\ReflectionConstructor;
 use Pimple\{
@@ -29,18 +31,16 @@ class CoreProvider implements ServiceProviderInterface
             );
         };
 
-        /**
-         * @var Kernel
-         */
-        $kernel = $app[Kernel::class];
+        $app[ExceptionHandler::class] = function (Container $c) {
+            return new ExceptionHandler($c[Kernel::class]);
+        };
 
-        if ($kernel->loggingEnabled()) {
-            $app->register(new LoggingProvider());
-        }
+        $app->register(new LoggingProvider());
 
         $app->register(new HttpProvider());
         $app->register(new RouterProvider());
         $app->register(new ServerProvider());
         $app->register(new ResourcesProvider());
+        $app->register(new ConsoleProvider());
     }
 }

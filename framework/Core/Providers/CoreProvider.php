@@ -9,20 +9,34 @@ use Eddy\Framework\{
 };
 use Eddy\Framework\Console\ConsoleProvider;
 use Eddy\Framework\Exceptions\ExceptionHandler;
+use Eddy\Framework\Filesystem\Filesystem;
 use Eddy\Framework\Support\Logging\LoggingProvider;
 use Eddy\RefCon\ReflectionConstructor;
 use Pimple\{
     Container,
     ServiceProviderInterface
 };
-use Symfony\Component\Filesystem\Filesystem;
+use React\EventLoop\{
+    Factory,
+    LoopInterface
+};
+use Symfony\Component\Filesystem\Filesystem as SymfonyFs;
 
 class CoreProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
-        $app[Filesystem::class] = function () {
-            return new Filesystem();
+        $app[LoopInterface::class] = function () {
+            return Factory::create();
+        };
+
+        $app[Filesystem::class] = function (Container $c) {
+            return Filesystem::create($c[LoopInterface::class]);
+        };
+
+        // alias symfony filesystem
+        $app[SymfonyFs::class] = function (Container $c) {
+            return $c[Filesystem::class];
         };
 
         $app[ReflectionConstructor::class] = function (Container $c) {

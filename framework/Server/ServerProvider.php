@@ -3,6 +3,7 @@ namespace Eddy\Framework\Server;
 
 use Eddy\Framework\Core\Config;
 use Eddy\Framework\Exceptions\ExceptionHandler;
+use Eddy\Framework\Routing\ErrorHandler;
 use Eddy\Framework\Routing\LoadMiddleware;
 use Eddy\Framework\Routing\RouteDispatcher;
 use Eddy\RefCon\ReflectionConstructor;
@@ -25,12 +26,15 @@ class ServerProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
-        $app[LoopInterface::class] = function () {
-            return Factory::create();
-        };
+        if (!isset($app[LoopInterface::class])) {
+            $app[LoopInterface::class] = function () {
+                return Factory::create();
+            };
+        }
 
         $app[HttpServer::class] = function (Container $c) {
             $handler = [
+                $c[ErrorHandler::class],
                 ...(new LoadMiddleware(
                     $c[ReflectionConstructor::class],
                     $c[Config::class]['http.middleware']

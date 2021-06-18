@@ -50,7 +50,8 @@
         "simoneddy/coder": "dev-master",
         "simoneddy/refcon": "dev-master",
         "psr/log": "^1.1",
-        "monolog/monolog": "^2.2"
+        "monolog/monolog": "^2.2",
+        "react/filesystem": "^0.1.2"
     },
     "repositories": [
         {

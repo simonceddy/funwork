@@ -22,7 +22,7 @@ class ExceptionHandler
     {
         $this->kernel->error((string) $e);
 
-        $this->output->writeln("<error>ERROR\n{$e->getMessage()}</error>");
+        $this->output->writeln("<error>ERROR</error>\n{$e->getMessage()}");
         
         return 0;
     }

@@ -6,6 +6,7 @@ use Eddy\Framework\{
     Routing\ControllerResolver,
     Routing\RouteDispatcher,
 };
+use Eddy\Framework\Routing\ErrorHandler;
 use Eddy\RefCon\ReflectionConstructor;
 use FastRoute\{
     DataGenerator,
@@ -20,11 +21,20 @@ use Pimple\{
     Container,
     ServiceProviderInterface
 };
+use Psr\Log\LoggerInterface;
 
 class RouterProvider implements ServiceProviderInterface
 {
     public function register(Container $app)
     {
+        $app[ErrorHandler::class] = function (Container $c) {
+            return new ErrorHandler(
+                isset($c[LoggerInterface::class])
+                    ? $c[LoggerInterface::class]
+                    : null
+            );
+        };
+
         $app[RouteParser::class] = function () {
             return new StdParser();
         };

@@ -1,6 +1,7 @@
 <?php
 namespace Eddy\Framework\Routing;
 
+use Eddy\Framework\Http\Messages\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
 use React\Http\Message\Response;
@@ -19,9 +20,8 @@ final class ErrorHandler
                 $this->logger->error((string) $error);
             }
 
-            return new Response( 500,
-                ['Content-type' => 'application/json'],
-                json_encode(['message' => $error->getMessage()])
+            return JsonResponse::internalServerError(
+                $error->getMessage()
             );
         }
     }

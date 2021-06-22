@@ -2,7 +2,7 @@
 namespace Eddy\Framework\Http\Controllers;
 
 use Eddy\Framework\Filesystem\Filesystem;
-use Eddy\Framework\Http\Response\JsonResponse;
+use Eddy\Framework\Http\Messages\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Filesystem\Node\FileInterface;
 use React\Filesystem\Stream\ReadableStream;

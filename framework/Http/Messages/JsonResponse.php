@@ -1,9 +1,9 @@
 <?php
-namespace Eddy\Framework\Http\Response;
+namespace Eddy\Framework\Http\Messages;
 
-use React\Http\Message\Response;
+use RingCentral\Psr7\Response as Psr7Response;
 
-final class JsonResponse extends Response
+final class JsonResponse extends Psr7Response
 {
     public function __construct(int $statusCode, $data = null)
     {

@@ -20,7 +20,7 @@
           "App\\": "src"
        },
        "files": [
-           "framework/functions.php"
+           "framework/Support/functions.php"
        ]
     },
     "require-dev": {
@@ -49,6 +49,7 @@
         "doctrine/dbal": "^3.1",
         "simoneddy/coder": "dev-master",
         "simoneddy/refcon": "dev-master",
+        "simoneddy/config": "dev-master",
         "psr/log": "^1.1",
         "monolog/monolog": "^2.2",
         "react/filesystem": "^0.1.2"
@@ -61,6 +62,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/simonceddy/refcon"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/simonceddy/config"
         }
     ]
 }

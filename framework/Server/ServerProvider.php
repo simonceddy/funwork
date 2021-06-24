@@ -1,7 +1,7 @@
 <?php
 namespace Eddy\Framework\Server;
 
-use Eddy\Framework\Core\Config;
+use Eddy\Config\Config;
 use Eddy\Framework\Exceptions\ExceptionHandler;
 use Eddy\Framework\Routing\ErrorHandler;
 use Eddy\Framework\Routing\LoadMiddleware;

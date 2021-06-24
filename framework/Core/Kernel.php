@@ -1,9 +1,9 @@
 <?php
 namespace Eddy\Framework\Core;
 
+use Eddy\Config\Config;
 use Eddy\Framework\{
-    Bootstrap\InitApplication,
-    Console\ConsoleProvider
+    Bootstrap\InitApplication
 };
 use Eddy\Framework\Support\Traits\General\HasArrayAccess;
 use Pimple\{
@@ -193,7 +193,7 @@ LoggerInterface,
     public static function create(string $projectDir = null): Kernel
     {
         $dir = $projectDir ?? projectDir();
-        $config = Config::fromDir($dir . '/config');
+        $config = Config::fromPath($dir . '/config');
         return new static(
             new Container(),
             $config

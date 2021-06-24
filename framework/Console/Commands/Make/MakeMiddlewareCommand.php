@@ -3,7 +3,7 @@ namespace Eddy\Framework\Console\Commands\Make;
 
 use Eddy\Coder\Creator;
 use Eddy\Coder\PhpResource;
-use Eddy\Framework\Core\Config;
+use Eddy\Config\Config;
 use Symfony\Component\Console\{
     Command\Command,
     Input\InputArgument,

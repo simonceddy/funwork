@@ -2,10 +2,8 @@
 namespace Eddy\Framework\Console;
 
 use Eddy\Coder\Creator;
-use Eddy\Framework\{
-    Core\Config,
-    Server\Server
-};
+use Eddy\Config\Config;
+use Eddy\Framework\Server\Server;
 use Pimple\{
     Container,
     ServiceProviderInterface

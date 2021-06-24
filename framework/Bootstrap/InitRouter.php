@@ -1,7 +1,7 @@
 <?php
 namespace Eddy\Framework\Bootstrap;
 
-use Eddy\Framework\Support\Util\SafeInclude;
+use Eddy\Config\SafeInclude;
 use FastRoute\RouteCollector;
 
 class InitRouter

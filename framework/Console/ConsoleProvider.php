@@ -1,9 +1,7 @@
 <?php
 namespace Eddy\Framework\Console;
 
-use Eddy\Framework\{
-    Core\Config,
-};
+use Eddy\Config\Config;
 use Pimple\{
     Container,
     ServiceProviderInterface

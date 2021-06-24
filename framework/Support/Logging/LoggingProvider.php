@@ -1,7 +1,7 @@
 <?php
 namespace Eddy\Framework\Support\Logging;
 
-use Eddy\Framework\Core\Config;
+use Eddy\Config\Config;
 use Eddy\RefCon\ReflectionConstructor;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;

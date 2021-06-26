@@ -13,12 +13,20 @@ class Filesystem extends SymfonyFs implements FilesystemInterface
 {
     private function __construct(
         private ReactFs $reactFs,
-    ) {
+        private ? string $rootDir = null
+    ) {}
+
+    public function rootDir()
+    {
+        return $this->rootDir ?? false;
     }
 
     public static function create(LoopInterface $loop, array $options = [])
     {
-        return new static(ReactFs::create($loop, $options));
+        return new static(
+            ReactFs::create($loop, $options),
+            $options['rootDir'] ?? null
+        );
     }
 
     public static function createFromAdapter(AdapterInterface $adapter)

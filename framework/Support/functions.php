@@ -23,7 +23,7 @@ if (!function_exists('projectDir')) {
      * @return string The path to the project root as a string.
      */
     function projectDir(): string {
-        $dir = dirname(__DIR__);
+        $dir = getcwd();
 
         while (!file_exists($dir . '/vendor/autoload.php')
             && !file_exists($dir . '/composer.json')

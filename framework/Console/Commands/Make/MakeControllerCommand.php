@@ -4,6 +4,7 @@ namespace Eddy\Framework\Console\Commands\Make;
 use Eddy\Coder\Creator;
 use Eddy\Coder\PhpResource;
 use Eddy\Config\Config;
+use Eddy\Framework\Filesystem\Filesystem;
 use Symfony\Component\Console\{
     Command\Command,
     Input\InputArgument,
@@ -11,7 +12,6 @@ use Symfony\Component\Console\{
     Output\OutputInterface
 };
 use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Filesystem\Filesystem;
 
 class MakeControllerCommand extends Command
 {

@@ -4,4 +4,4 @@
 .DS_Store
 /bin/*
 !/bin/eddy
-/testThing/*
+/apps/*

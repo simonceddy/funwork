@@ -68,6 +68,13 @@ class SetUp
         }
 
         $setUp = new self($projectDir);
+
+        try {
+            echo 'Setting up framework boilerplate...' . PHP_EOL;
+            $setUp->runSetup();
+        } catch (\Throwable $e) {
+            throw $e;
+        }
     }
 
     public static function isSetUp(string $projectDir): bool

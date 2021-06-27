@@ -1,10 +1,8 @@
 <?php
-namespace Eddy\Framework\Core\Providers;
+namespace Eddy\Framework\Routing;
 
 use Eddy\Framework\{
     Bootstrap\InitRouter,
-    Routing\ControllerResolver,
-    Routing\RouteDispatcher,
 };
 use Eddy\Framework\Routing\ErrorHandler;
 use Eddy\RefCon\ReflectionConstructor;

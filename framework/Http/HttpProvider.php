@@ -1,5 +1,5 @@
 <?php
-namespace Eddy\Framework\Core\Providers;
+namespace Eddy\Framework\Http;
 
 use Laminas\Diactoros\{
     Request,

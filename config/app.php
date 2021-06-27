@@ -8,8 +8,15 @@ return [
 
     'namespace' => 'App',
 
-    // You can register service providers here
     'providers' => [
+        // Framework providers
+        Eddy\Framework\Http\HttpProvider::class,
+        Eddy\Framework\Routing\RouterProvider::class,
+        Eddy\Framework\Server\ServerProvider::class,
+        Eddy\Framework\Resources\ResourcesProvider::class,
+        Eddy\Framework\Console\ConsoleProvider::class,
+
+        // Register additional providers here
         App\Providers\AppProvider::class,
     ],
 ];

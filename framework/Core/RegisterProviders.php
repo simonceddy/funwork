@@ -1,13 +1,8 @@
 <?php
-namespace Eddy\Framework\Core\Providers;
+namespace Eddy\Framework\Core;
 
-use Eddy\Framework\{
-    // Core\Config,
-    Core\Kernel,
-    Resources\ResourcesProvider,
-    Server\ServerProvider,
-};
-use Eddy\Framework\Console\ConsoleProvider;
+use Eddy\Config\Config;
+use Eddy\Framework\Core\Kernel;
 use Eddy\Framework\Exceptions\ExceptionHandler;
 use Eddy\Framework\Filesystem\Filesystem;
 use Eddy\Framework\Support\Logging\LoggingProvider;
@@ -22,10 +17,37 @@ use React\EventLoop\{
 };
 use Symfony\Component\Filesystem\Filesystem as SymfonyFs;
 
-class CoreProvider implements ServiceProviderInterface
+class RegisterProviders implements ServiceProviderInterface
 {
+    public function __construct(private Kernel $kernel)
+    {}
+
+    private function bootProvider(Kernel $kernel, $provider)
+    {
+        if (is_string($provider) && class_exists($provider)) {
+            try {
+                $kernel->register(new $provider());
+            } catch (\Throwable $e) {
+                // Handle error
+                throw $e;
+            } 
+        }
+    }
+
+    private function bootProviders(Kernel $kernel, array $providers)
+    {
+        foreach ($providers as $index => $provider) {
+            $this->bootProvider($kernel, $provider);
+        }
+    }
+
     public function register(Container $app)
     {
+        $config = $this->kernel->config();
+
+        $app[Kernel::class] = fn() => $this->kernel;
+        $app[Config::class] = fn() => $config;
+        
         $app[LoopInterface::class] = function () {
             return Factory::create();
         };
@@ -51,10 +73,10 @@ class CoreProvider implements ServiceProviderInterface
 
         $app->register(new LoggingProvider());
 
-        $app->register(new HttpProvider());
-        $app->register(new RouterProvider());
-        $app->register(new ServerProvider());
-        $app->register(new ResourcesProvider());
-        $app->register(new ConsoleProvider());
+        $providers = $config['app.providers'];
+
+        if (!empty($providers)) {
+            $this->bootProviders($this->kernel, $providers);
+        }
     }
 }

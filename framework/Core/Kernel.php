@@ -21,6 +21,8 @@ use Psr\Log\LoggerTrait;
  * 
  * It is a PSR-11 wrapper for the pimple container, as well as being aware of
  * application config, and providing some extra helper methods.
+ * 
+ * It'a a bit of a god object at the moment.
  */
 class Kernel implements ContainerInterface,
 LoggerAwareInterface,
@@ -33,40 +35,26 @@ LoggerInterface,
 
     private bool $console = false;
 
-    private bool $loggingEnabled = true;
-
     private function __construct(
         private Container $pimple,
-        private Config $config
+        private Config $config,
+        private string $projectDir
     ) {
         $this->preboot();
-        $this->bindSelfToContainer();
-        $this->bootCoreServices();
+        $this->registerProviders();
         $this->bootApplication();
     }
 
     private function preboot()
     {
-        $this->loggingEnabled = $this->config['logs.disabled'] !== true;
-
         if (defined('STDIN') && php_sapi_name() === 'cli') {
             $this->console = true;
         }
     }
 
-    private function bindSelfToContainer()
+    private function registerProviders()
     {
-        if (!isset($this->pimple[Config::class])) {
-            $this->pimple[Config::class] = fn() => $this->config;
-        }
-        if (!isset($this->pimple[Kernel::class])) {
-            $this->pimple[Kernel::class] = fn() => $this;
-        }
-    }
-
-    private function bootCoreServices()
-    {
-        $this->pimple->register(new Providers\CoreProvider());
+        $this->pimple->register(new RegisterProviders($this));
     }
 
     private function bootApplication()
@@ -165,16 +153,6 @@ LoggerInterface,
         return $this->console;
     }
 
-    /**
-     * Is application logging enabled
-     *
-     * @return bool
-     */
-    public function loggingEnabled()
-    {
-        return $this->loggingEnabled;
-    }
-
     public function log($level, $message, array $context = array())
     {
         if (isset($this->logger)) {
@@ -183,20 +161,41 @@ LoggerInterface,
     }
 
     /**
+     * Get the root directory of the project
+     *
+     * @return void
+     */
+    public function projectDir()
+    {
+        return $this->projectDir;
+    }
+
+    /**
      * Static factory for creating a new Kernel
      *
      * @param string|null $projectDir If null the function will attempt to
      * auto-resolve the project root dir.
+     * @param string|null $configDir If null will default to $projectDir/config
      *
      * @return Kernel The newly minted and booted fresh Kernel instance
      */
-    public static function create(string $projectDir = null): Kernel
-    {
+    public static function create(
+        string $projectDir = null,
+        string $configDir = null
+    ): Kernel {
         $dir = $projectDir ?? projectDir();
-        $config = Config::fromPath($dir . '/config');
+
+        if (isset($configDir) && !is_dir($configDir)) {
+            // Handle unknown config directory
+            throw new \Exception('Could not find ' . $configDir);
+        }
+
+        $config = Config::fromPath($configDir ?? $dir . '/config');
+
         return new static(
             new Container(),
-            $config
+            $config,
+            $dir
         );
     }
 }

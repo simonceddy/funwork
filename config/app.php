@@ -17,6 +17,6 @@ return [
         Eddy\Framework\Console\ConsoleProvider::class,
 
         // Register additional providers here
-        App\Providers\AppProvider::class,
+        // App\Providers\AppProvider::class,
     ],
 ];

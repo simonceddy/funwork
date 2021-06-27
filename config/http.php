@@ -1,6 +1,6 @@
 <?php
 return [
     'middleware' => [
-        \App\Http\Middleware\MyCoolMiddleware::class
+        // \App\Http\Middleware\MyCoolMiddleware::class
     ]
 ];

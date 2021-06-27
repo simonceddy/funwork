@@ -1,14 +1,16 @@
 <?php
-
-use App\Http\Controllers\FrontController;
-use App\Http\Controllers\Test\DumpController;
-use App\Http\Controllers\Test\StatController;
 use FastRoute\RouteCollector as Routes;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use React\Http\Message\Response;
 
 return function (Routes $routes) {
     // Put web routes here
-    $routes->get('/', FrontController::class);
+
+    // Routes are callables:
+    $routes->get('/', function (Request $request) {
+        return new Response(200, [], 'Hello World!');
+    });
     
-    $routes->get('/stats', StatController::class);
-    // $routes->get('/dump', DumpController::class);
+    // Or invokable classes:
+    // $routes->get('/stats', App\Htto\Controllers\MyController::class);
 };

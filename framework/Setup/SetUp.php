@@ -72,6 +72,7 @@ class SetUp
         try {
             echo 'Setting up framework boilerplate...' . PHP_EOL;
             $setUp->runSetup();
+            echo 'Setup complete!';
         } catch (\Throwable $e) {
             throw $e;
         }

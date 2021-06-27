@@ -19,8 +19,7 @@
     ],
     "autoload": {
        "psr-4": {
-          "Eddy\\Framework\\": "framework",
-          "App\\": "src"
+          "Eddy\\Framework\\": "framework"
        },
        "files": [
            "framework/Support/functions.php"

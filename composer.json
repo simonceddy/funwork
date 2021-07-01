@@ -25,6 +25,13 @@
            "framework/Support/functions.php"
        ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Eddy\\Framework\\Installer\\": "ext/installer/Installer",
+            "Eddy\\Framework\\Database\\": "ext/database/Database",
+            "Eddy\\Framework\\Views\\": "ext/views/Views"
+        }
+    },
     "require-dev": {
         "symfony/var-dumper": "^5.2"
     },

@@ -1,0 +1,31 @@
+{
+    "name": "simoneddy/framework-installer",
+    "description": "installer for my silly framework cos why not",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Eddy",
+            "email": "simon@simoneddy.com.au"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+       "bin-dir": "bin"
+    },
+    "autoload": {
+       "psr-4": {
+          "Eddy\\Framework\\Installer\\": "Installer"
+       }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.3",
+        "phpunit/phpunit": "^9"
+    },
+    "require": {
+        "symfony/filesystem": "^5.3",
+        "symfony/console": "^5.3",
+        "symfony/process": "^5.3"
+    }
+}

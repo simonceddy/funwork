@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4a8731a80d88e8488657dcfe52e333e",
+    "content-hash": "b83f960e751d5ff74b88f3bbb8ee8b2f",
     "packages": [
         {
             "name": "cakephp/core",
@@ -3274,28 +3274,35 @@
         },
         {
             "name": "simoneddy/config",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/simonceddy/config.git",
-                "reference": "a98808fd5bd3aba791c3760bd296954cdd5cc897"
+                "reference": "431d58888c68706a92ac7fd14c0d26e426ac719f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/simonceddy/config/zipball/a98808fd5bd3aba791c3760bd296954cdd5cc897",
-                "reference": "a98808fd5bd3aba791c3760bd296954cdd5cc897",
+                "url": "https://api.github.com/repos/simonceddy/config/zipball/431d58888c68706a92ac7fd14c0d26e426ac719f",
+                "reference": "431d58888c68706a92ac7fd14c0d26e426ac719f",
                 "shasum": ""
             },
-            "require-dev": {
-                "symfony/var-dumper": "^5.3"
+            "require": {
+                "php": ">=8.0"
             },
-            "default-branch": true,
+            "require-dev": {
+                "symfony/var-dumper": "^5.3",
+                "symfony/yaml": "^5.3"
+            },
+            "suggest": {
+                "symfony/yaml": "Required for YAML support"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Eddy\\Config\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3307,10 +3314,10 @@
             ],
             "description": "basic read only config class with file/dir loader and dot notation",
             "support": {
-                "source": "https://github.com/simonceddy/config/tree/master",
-                "issues": "https://github.com/simonceddy/config/issues"
+                "issues": "https://github.com/simonceddy/config/issues",
+                "source": "https://github.com/simonceddy/config/tree/v1.0.1"
             },
-            "time": "2021-06-24T16:16:34+00:00"
+            "time": "2021-07-05T03:12:03+00:00"
         },
         {
             "name": "simoneddy/refcon",
@@ -5238,16 +5245,16 @@
         },
         {
             "name": "wyrihaximus/react-child-process-messenger",
-            "version": "3.1.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-child-process-messenger.git",
-                "reference": "b3ed64f02624f0905b9fbf6d1268abc75e94df2c"
+                "reference": "c8af6e67f04efdb97735904bd23119ad0f3f1c14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-messenger/zipball/b3ed64f02624f0905b9fbf6d1268abc75e94df2c",
-                "reference": "b3ed64f02624f0905b9fbf6d1268abc75e94df2c",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-messenger/zipball/c8af6e67f04efdb97735904bd23119ad0f3f1c14",
+                "reference": "c8af6e67f04efdb97735904bd23119ad0f3f1c14",
                 "shasum": ""
             },
             "require": {
@@ -5306,7 +5313,7 @@
             "description": "Messenger decorator for react/child-process",
             "support": {
                 "issues": "https://github.com/WyriHaximus/reactphp-child-process-messenger/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-child-process-messenger/tree/3.1.0"
+                "source": "https://github.com/WyriHaximus/reactphp-child-process-messenger/tree/4.0.0"
             },
             "funding": [
                 {
@@ -5314,20 +5321,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-17T22:36:30+00:00"
+            "time": "2021-07-04T20:56:16+00:00"
         },
         {
             "name": "wyrihaximus/react-child-process-pool",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/reactphp-child-process-pool.git",
-                "reference": "18bd71fe72e31c5dc50ed94aaa5ca931e782d201"
+                "reference": "708dc34ba2b823b9c8e2935b9f1e807b4d8c11f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-pool/zipball/18bd71fe72e31c5dc50ed94aaa5ca931e782d201",
-                "reference": "18bd71fe72e31c5dc50ed94aaa5ca931e782d201",
+                "url": "https://api.github.com/repos/WyriHaximus/reactphp-child-process-pool/zipball/708dc34ba2b823b9c8e2935b9f1e807b4d8c11f9",
+                "reference": "708dc34ba2b823b9c8e2935b9f1e807b4d8c11f9",
                 "shasum": ""
             },
             "require": {
@@ -5336,7 +5343,7 @@
                 "react/event-loop": "^1.1",
                 "wyrihaximus/cpu-core-detector": "^2 || ^1.0.2",
                 "wyrihaximus/file-descriptors": "^2 || ^1.0 || ^0.1",
-                "wyrihaximus/react-child-process-messenger": "^3 || ^2.10.1",
+                "wyrihaximus/react-child-process-messenger": "^4 || ^3 || ^2.10.1",
                 "wyrihaximus/ticking-promise": "^2 || ^1.5"
             },
             "require-dev": {
@@ -5371,7 +5378,7 @@
             "description": "Pool wyrihaximus/react-child-process-messenger processes",
             "support": {
                 "issues": "https://github.com/WyriHaximus/reactphp-child-process-pool/issues",
-                "source": "https://github.com/WyriHaximus/reactphp-child-process-pool/tree/1.7.0"
+                "source": "https://github.com/WyriHaximus/reactphp-child-process-pool/tree/1.8.0"
             },
             "funding": [
                 {
@@ -5379,7 +5386,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-16T20:21:51+00:00"
+            "time": "2021-07-04T21:49:01+00:00"
         },
         {
             "name": "wyrihaximus/react-child-process-promise",
@@ -5590,8 +5597,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "simoneddy/coder": 20,
-        "simoneddy/refcon": 20,
-        "simoneddy/config": 20
+        "simoneddy/refcon": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

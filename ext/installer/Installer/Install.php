@@ -8,7 +8,7 @@ class Install
     public static function fresh(string $name, array $options = [])
     {
         dump(getcwd());
-        isset($dir) ?: $dir = getcwd() . DIRECTORY_SEPARATOR . $name;
+        $dir = getcwd() . DIRECTORY_SEPARATOR . $name;
 
         if (is_dir($dir)) {
             dd(scandir($dir));

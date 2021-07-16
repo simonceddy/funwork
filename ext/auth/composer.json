@@ -1,0 +1,25 @@
+{
+    "name": "simoneddy/framework-auth",
+    "description": ".",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Eddy",
+            "email": "simon@simoneddy.com.au"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+       "bin-dir": "bin"
+    },
+    "autoload": {
+       "psr-4": {
+          "Eddy\\Framework\\Auth\\": "src"
+       }
+    },
+    "require-dev": {
+        "illuminate/auth": "^8.50"
+    }
+}

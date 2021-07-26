@@ -1,0 +1,9 @@
+suites:
+    default:
+        psr4_prefix:  Eddy\Framework\Auth
+        namespace:    Eddy\Framework\Auth
+        spec_path:    tests
+        src_path:     src
+
+
+formatter.name:   pretty

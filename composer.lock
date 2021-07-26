@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cakephp/core",
-            "version": "4.2.7",
+            "version": "4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "aa8b40e2adcfbe52c71ec273866628ffc6d87838"
+                "reference": "bed4b6f09550909beea5440627d5a6ff85fb1934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/aa8b40e2adcfbe52c71ec273866628ffc6d87838",
-                "reference": "aa8b40e2adcfbe52c71ec273866628ffc6d87838",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/bed4b6f09550909beea5440627d5a6ff85fb1934",
+                "reference": "bed4b6f09550909beea5440627d5a6ff85fb1934",
                 "shasum": ""
             },
             "require": {
@@ -61,11 +61,11 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2021-05-24T17:26:44+00:00"
+            "time": "2021-06-26T14:06:56+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "4.2.7",
+            "version": "4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -197,16 +197,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "ac77408b22cc6c4d0b4947d20a3889be3043566e"
+                "reference": "331b4d5dbaeab3827976273e9356b3b453c300ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/ac77408b22cc6c4d0b4947d20a3889be3043566e",
-                "reference": "ac77408b22cc6c4d0b4947d20a3889be3043566e",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/331b4d5dbaeab3827976273e9356b3b453c300ce",
+                "reference": "331b4d5dbaeab3827976273e9356b3b453c300ce",
                 "shasum": ""
             },
             "require": {
@@ -276,7 +276,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/2.1.0"
+                "source": "https://github.com/doctrine/cache/tree/2.1.1"
             },
             "funding": [
                 {
@@ -292,7 +292,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-14T11:22:57+00:00"
+            "time": "2021-07-17T14:49:29+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -1109,16 +1109,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "9738e495f288eec0b187e310b7cdbbb285777dbe"
+                "reference": "71312564759a7db5b789296369c1a264efc43aad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/9738e495f288eec0b187e310b7cdbbb285777dbe",
-                "reference": "9738e495f288eec0b187e310b7cdbbb285777dbe",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/71312564759a7db5b789296369c1a264efc43aad",
+                "reference": "71312564759a7db5b789296369c1a264efc43aad",
                 "shasum": ""
             },
             "require": {
@@ -1189,7 +1189,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.3.1"
+                "source": "https://github.com/Seldaek/monolog/tree/2.3.2"
             },
             "funding": [
                 {
@@ -1201,7 +1201,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-14T11:56:39+00:00"
+            "time": "2021-07-23T07:42:52+00:00"
         },
         {
             "name": "nikic/fast-route",

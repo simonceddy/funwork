@@ -20,6 +20,13 @@
        }
     },
     "require-dev": {
-        "illuminate/auth": "^8.50"
+        "illuminate/auth": "^8.50",
+        "phpspec/phpspec": "^7.1"
+    },
+    "require": {
+        "symfony/security-core": "^5.3",
+        "symfony/security-http": "^5.3",
+        "symfony/security-csrf": "^5.3",
+        "symfony/security-guard": "^5.3"
     }
 }

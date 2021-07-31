@@ -12,7 +12,7 @@ use Pimple\{
     ServiceProviderInterface
 };
 use React\EventLoop\{
-    Factory,
+    Loop,
     LoopInterface
 };
 use Symfony\Component\Filesystem\Filesystem as SymfonyFs;
@@ -49,7 +49,7 @@ class RegisterProviders implements ServiceProviderInterface
         $app[Config::class] = fn() => $config;
         
         $app[LoopInterface::class] = function () {
-            return Factory::create();
+            return Loop::get();
         };
 
         $app[Filesystem::class] = function (Container $c) {

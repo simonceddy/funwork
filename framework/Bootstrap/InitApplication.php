@@ -8,6 +8,7 @@ class InitApplication
 {
     public function boot(Kernel $kernel)
     {
+        // TODO why is kernel also logger
         if ($kernel->has('logger.framework')
             && $kernel->has(ExceptionHandler::class)
         ) {

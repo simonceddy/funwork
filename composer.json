@@ -12,7 +12,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-       "bin-dir": "bin"
+       "bin-dir": "bin",
+        "allow-plugins": {
+            "wyrihaximus/composer-update-bin-autoload-path": true
+        }
     },
     "bin": [
         "bin/eddy"

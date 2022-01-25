@@ -17,6 +17,9 @@ use React\EventLoop\{
 };
 use Symfony\Component\Filesystem\Filesystem as SymfonyFs;
 
+/**
+ * @todo Change name to RegisterCoreServices
+ */
 class RegisterProviders implements ServiceProviderInterface
 {
     public function __construct(private Kernel $kernel)

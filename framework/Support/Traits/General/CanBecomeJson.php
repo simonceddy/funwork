@@ -5,7 +5,7 @@ trait CanBecomeJson
 {
     abstract public function toArray(): array;
 
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toArray();
     }

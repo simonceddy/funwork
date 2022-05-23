@@ -24,6 +24,13 @@ class ControllerResolver
         throw new \InvalidArgumentException('Invalid controller class');
     }
 
+    /**
+     * Resolve a controller
+     *
+     * @param string|callback $controller
+     *
+     * @return void
+     */
     public function resolve($controller)
     {
         if (is_callable($controller)) {

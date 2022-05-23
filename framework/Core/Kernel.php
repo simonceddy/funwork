@@ -11,10 +11,12 @@ use Pimple\{
     ServiceProviderInterface
 };
 use Psr\Container\ContainerInterface;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
-use Psr\Log\LoggerInterface;
-use Psr\Log\LoggerTrait;
+use Psr\Log\{
+    LoggerAwareInterface,
+    LoggerAwareTrait,
+    LoggerInterface,
+    LoggerTrait
+};
 
 /**
  * The Kernel class is the central app object of the framework.
@@ -138,6 +140,13 @@ LoggerInterface,
         return $this->pimple;
     }
 
+    /**
+     * Register a service provider
+     *
+     * @param ServiceProviderInterface $provider
+     *
+     * @return void
+     */
     public function register(ServiceProviderInterface $provider)
     {
         $this->pimple->register($provider);
